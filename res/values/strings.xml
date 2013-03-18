@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Cricket ++</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="LiveScores">Live Scores</string>
+    <string name="PastMatches">Recent Matches</string>
+    <string name="title_activity_past_matches">Recent Matches</string>
+    <string name="hello">Hello</string>
+    <string name="title_activity_score_summary">Score Summary</string>
+    <string name="Full_Scorecard"><u><b><i>full scorecard</i></b></u></string>
+    <string name="title_activity_full_scorecard_main">Full Scorecard</string>
+
+</resources>

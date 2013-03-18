@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/inningContent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+     <TextView
+        android:id="@+id/textTeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="India"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <ListView
+        android:id="@+id/listScorecard"
+       	android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textTotal"
+        android:layout_below="@+id/textTeamName"
+        android:layout_centerHorizontal="true"
+        android:padding="2dp" >
+    </ListView>
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="fill_parent"
+        android:layout_height="0.2sp"
+        android:background="@android:color/darker_gray"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textTotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:paddingLeft="2dp"
+        android:text="Total" />
+
+    <TextView
+        android:id="@+id/textTotalValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="54dp"
+        android:layout_toRightOf="@+id/textTeamName"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</RelativeLayout>
