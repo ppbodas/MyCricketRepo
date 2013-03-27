@@ -60,7 +60,11 @@ public class ScoreSummary extends Activity {
 					textResult.setText(winningTeamName + " won by " + joResult.getString("by") + " runs and " + "innings");							
 				}
 				else{
-					textResult.setText(winningTeamName + " won by " + joResult.getString("by") + " " + joResult.getString("how"));
+					String sDocwordLewis = "";
+					if("1".equals(joResult.getString("isdl"))){
+						sDocwordLewis = " (D/L)";
+					}
+					textResult.setText(winningTeamName + " won by " + joResult.getString("by") + " " + joResult.getString("how") + sDocwordLewis);
 				}
 			}
 			else if("2".equals(joResult.getString("r"))){

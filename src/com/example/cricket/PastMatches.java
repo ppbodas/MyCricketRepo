@@ -94,7 +94,11 @@ public class PastMatches extends Activity {
 						info.setMatchResult(winningTeamName + " won by " + joResult.getString("by") + " runs and " + joResult.getString("how"));							
 					}			
 					else{
-					info.setMatchResult(winningTeamName + " won by " + joResult.getString("by") + " " + joResult.getString("how"));
+						String sDocwordLewis = "";
+						if("yes".equals(joResult.getString("isdl"))){
+							sDocwordLewis = " (D/L)";
+						}
+					info.setMatchResult(winningTeamName + " won by " + joResult.getString("by") + " " + joResult.getString("how") + sDocwordLewis);
 					}
 				}
 				else{

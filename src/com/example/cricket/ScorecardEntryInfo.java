@@ -40,6 +40,8 @@ public class ScorecardEntryInfo {
 		return ("(" + mBallsFaced + ")");
 	}
 	public String getOutInfo(){
+		if("null".equals(mOutInfo))
+			return "";
 		return mOutInfo;
 	}
 }
