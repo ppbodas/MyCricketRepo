@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
         pastMatchesBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-            	Intent intent = new Intent(MainActivity.this,PastMatches.class);
+            	Intent intent = new Intent(MainActivity.this,PastMatchesActivity.class);
             	startActivity(intent);
             	
             }

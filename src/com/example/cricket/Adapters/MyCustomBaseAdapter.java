@@ -1,7 +1,13 @@
-package com.example.cricket;
+package com.example.cricket.Adapters;
 
 import java.util.ArrayList;
 
+import com.example.cricket.R;
+import com.example.cricket.R.drawable;
+import com.example.cricket.R.id;
+import com.example.cricket.R.layout;
+
+import DataModel.PastMatchInfo;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

@@ -1,4 +1,4 @@
-package com.example.cricket;
+package DataModel;
 
 public class PlayerInfo {
 	public String mPlayerName;

@@ -1,4 +1,4 @@
-package com.example.cricket;
+package DataModel;
 
 public class PastMatchInfo {
 	private String matchTitle = "";

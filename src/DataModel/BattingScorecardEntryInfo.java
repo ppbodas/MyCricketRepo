@@ -1,6 +1,6 @@
-package com.example.cricket;
+package DataModel;
 
-public class ScorecardEntryInfo {
+public class BattingScorecardEntryInfo {
 	private String mPlayerName;
 	private String mPlayerImageURL;	
 	private String mRunsScored;

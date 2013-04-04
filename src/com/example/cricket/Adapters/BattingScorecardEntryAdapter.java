@@ -1,11 +1,15 @@
-package com.example.cricket;
+package com.example.cricket.Adapters;
 
 import java.util.ArrayList;
 
-import com.example.cricket.MyCustomBaseAdapter.ViewHolder;
+import com.example.cricket.R;
+import com.example.cricket.Adapters.MyCustomBaseAdapter.ViewHolder;
+import com.example.cricket.R.id;
+import com.example.cricket.R.layout;
 import com.example.webutil.ImageLoader;
 import com.example.webutil.Webutil;
 
+import DataModel.BattingScorecardEntryInfo;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -15,13 +19,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MyCustomScorecardEntryAdapter extends BaseAdapter {
-	private static ArrayList<ScorecardEntryInfo> scorecardEntryInfoList;
+public class BattingScorecardEntryAdapter extends BaseAdapter {
+	private static ArrayList<BattingScorecardEntryInfo> scorecardEntryInfoList;
 	private ImageLoader mImageLoader;
 
 	private LayoutInflater mInflater;
 
-	public MyCustomScorecardEntryAdapter(Context context, ArrayList<ScorecardEntryInfo> entryInfos) {
+	public BattingScorecardEntryAdapter(Context context, ArrayList<BattingScorecardEntryInfo> entryInfos) {
 		scorecardEntryInfoList = entryInfos;
 		mInflater = LayoutInflater.from(context);
 	}
@@ -45,7 +49,7 @@ public class MyCustomScorecardEntryAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		  ViewHolder holder;
 		  if (convertView == null) {
-		   convertView = mInflater.inflate(R.layout.scorecard_entry_row1, null);
+		   convertView = mInflater.inflate(R.layout.batting_scorecard_entry_row, null);
 		   holder = new ViewHolder();
 		   holder.txtPlayerName = (TextView) convertView.findViewById(R.id.textPlayerName);
 		   holder.txtRunsScored = (TextView) convertView.findViewById(R.id.textRunsScored);

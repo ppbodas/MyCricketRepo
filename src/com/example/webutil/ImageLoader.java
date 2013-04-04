@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 
 public class ImageLoader {
-	public static ImageLoader mOnlyInstance = new ImageLoader();
+	private static ImageLoader mOnlyInstance = new ImageLoader();
 	private final Map<String, Drawable> drawableMap;
 
 	private ImageLoader() {

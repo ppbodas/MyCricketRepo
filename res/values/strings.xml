@@ -11,5 +11,6 @@
     <string name="title_activity_score_summary">Score Summary</string>
     <string name="Full_Scorecard"><u><b><i>full scorecard</i></b></u></string>
     <string name="title_activity_full_scorecard_main">Full Scorecard</string>
+    <string name="title_activity_view_pager">ViewPagerActivity</string>
 
 </resources>

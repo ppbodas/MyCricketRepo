@@ -8,11 +8,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.example.cricket.Adapters.BattingScorecardEntryAdapter;
 import com.example.cricketutil.CricketUtil;
 import com.example.webutil.Webutil;
 
+import DataModel.PlayerInfo;
+import DataModel.BattingScorecardEntryInfo;
+import DataModel.ScorecardMatchInfo;
+import DataModel.TeamInfo;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.TabActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -27,75 +33,27 @@ import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
-public class FullScorecardMain extends Activity {
+public class FullScorecardActivity extends TabActivity{
 
 	private TabHost mTabHost;
-	private JSONObject m_joScorecard;
-	private HashMap<String, TeamInfo> mTeamsInfo = new HashMap<String, TeamInfo>();
-
-	private void fillTeamInfo(){
-		try{
-			JSONArray jaTeams, jaSquad;
-			jaTeams = m_joScorecard.getJSONArray("teams");
-			TeamInfo team1 = new TeamInfo();
-			team1.mTeamFullName = jaTeams.getJSONObject(0).getString("fn");
-			team1.mTeamStdFlagURL = jaTeams.getJSONObject(0).getJSONObject("flag").getString("std");
-
-			TeamInfo team2 = new TeamInfo();
-			team2.mTeamFullName = jaTeams.getJSONObject(1).getString("fn");
-			team2.mTeamStdFlagURL = jaTeams.getJSONObject(1).getJSONObject("flag").getString("std");
-
-			mTeamsInfo.put(jaTeams.getJSONObject(0).getString("i"), team1);
-			mTeamsInfo.put(jaTeams.getJSONObject(1).getString("i"), team2);
-
-			//Now populate squad info in map
-			int iTeamsSize = jaTeams.length();
-			for (int i =0; i<iTeamsSize; ++i){
-				jaSquad = jaTeams.getJSONObject(i).getJSONArray("squad");
-				int iSquadSize = jaSquad.length();
-				for(int j = 0; j<iSquadSize;++j){
-					PlayerInfo playerInfo = new PlayerInfo();
-					playerInfo.mPlayerName = jaSquad.getJSONObject(j).getString("full");
-					playerInfo.mPlayerImageURL = jaSquad.getJSONObject(j).getString("photo");
-					String playerId = jaSquad.getJSONObject(j).getString("i");
-					System.out.println("Player Id: "+ playerId);
-					mTeamsInfo.get(jaTeams.getJSONObject(i).getString("i")).mSquad.put(playerId, playerInfo);
-				}
-			}
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
+	
 	private void createTabs(){
-		Context context = this;
-		LayoutInflater inflater = (LayoutInflater)context.getSystemService
-				(Context.LAYOUT_INFLATER_SERVICE);
-
-		final RelativeLayout tabContent1 = (RelativeLayout) inflater.inflate(R.layout.full_score_tab_content, null);		
-
+		
 		mTabHost.setup();
 		try{
-			JSONArray jaInningsList = m_joScorecard.getJSONArray("past_ings");
+			JSONObject l_joScorecard = ScorecardMatchInfo.getOnlyInstance().getScorecardJSON();
+			JSONArray jaInningsList = l_joScorecard.getJSONArray("past_ings");
 			int inningsCount = jaInningsList.length();
 			for(int i=0; i<inningsCount;++i){
+				Intent intent = new Intent().setClass(this, ViewPagerActivity.class);
 				String inningId = jaInningsList.getJSONObject(i).getJSONObject("s").getString("i");
-				TabSpec spec = mTabHost.newTabSpec(inningId);
-				spec.setIndicator("Inning" + inningId).setContent(new TabHost.TabContentFactory() {					
-					@Override
-					public View createTabContent(String tag) {
-						return tabContent1;
-					}
-				});				
+				intent.putExtra("InningId", inningId);
+				TabSpec spec = mTabHost.newTabSpec(inningId)
+				.setIndicator("Inning" + inningId)
+				.setContent(intent);
+				
 				mTabHost.addTab(spec);
 			}
-			mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-				@Override
-				public void onTabChanged(String tabID){
-					setInfoInCurrentTab();
-				}
-			});
 
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -104,7 +62,7 @@ public class FullScorecardMain extends Activity {
 
 	}
 
-	private void setInfoInCurrentTab(){
+	/*private void setInfoInCurrentTab(){
 		try{
 			JSONArray jaInningsList = m_joScorecard.getJSONArray("past_ings");
 			ArrayList<ScorecardEntryInfo> scorecardEntryInfoList = new ArrayList<ScorecardEntryInfo>();
@@ -155,27 +113,28 @@ public class FullScorecardMain extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_full_scorecard_main);
-		mTabHost = (TabHost) findViewById(R.id.inningTabHost);
+		mTabHost = (TabHost) findViewById(android.R.id.tabhost);
 
 		Intent intent = getIntent();
-		String result = intent.getStringExtra(ScoreSummary.EXTRA_MESSAGE);
+		String result = intent.getStringExtra(ScoreSummaryActivity.EXTRA_MESSAGE);
 		
 		try {
-			m_joScorecard = new JSONObject(result);
-			m_joScorecard = m_joScorecard.getJSONObject("query").getJSONObject("results").getJSONObject("Scorecard");
+			//Prepare current scorecard match data
+			JSONObject jsonObj = new JSONObject(result);
+			jsonObj = jsonObj.getJSONObject("query").getJSONObject("results").getJSONObject("Scorecard");
+			ScorecardMatchInfo.getOnlyInstance().resetData();
+			ScorecardMatchInfo.getOnlyInstance().setScorecardJSON(jsonObj);
+			ScorecardMatchInfo.getOnlyInstance().initialize();
 
 			createTabs();
 
-			//Fill team info
-			fillTeamInfo();
-			//Set info in current tab
-			setInfoInCurrentTab();
+					
 		}
 		catch (Exception e) {
 			// TODO: handle exception

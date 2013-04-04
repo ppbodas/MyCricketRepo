@@ -7,9 +7,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.cricket.R;
+import com.example.cricket.Adapters.MyCustomBaseAdapter;
 import com.example.cricketutil.CricketUtil;
 
 import com.example.webutil.Webutil;
+
+import DataModel.PastMatchInfo;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -22,7 +25,7 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 
-public class PastMatches extends Activity {
+public class PastMatchesActivity extends Activity {
 	String[] values = new String[] {"Android", "iPhone", "WindowsMobile", "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X", "Linux", "OS/2" };
 	public final static String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 	private ArrayList<PastMatchInfo> mPastMatchesInfo;
@@ -114,7 +117,7 @@ public class PastMatches extends Activity {
 			  @Override
 			  public void onItemClick(AdapterView<?> parent, View view,
 			    int position, long id) {
-				   Intent intent = new Intent(PastMatches.this, ScoreSummary.class);
+				   Intent intent = new Intent(PastMatchesActivity.this, ScoreSummaryActivity.class);
 			    	intent.putExtra(EXTRA_MESSAGE, mPastMatchesInfo.get(position).getMatchId());
 			    	startActivity(intent);
 			 }

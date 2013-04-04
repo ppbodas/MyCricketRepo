@@ -10,6 +10,7 @@ import com.example.cricketutil.CricketUtil;
 import com.example.webutil.ImageLoader;
 import com.example.webutil.Webutil;
 
+import DataModel.TeamInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
@@ -24,7 +25,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ScoreSummary extends Activity {
+public class ScoreSummaryActivity extends Activity {
 	private HashMap<String,TeamInfo> mTeams = new HashMap<String,TeamInfo>();
 	public final static String EXTRA_MESSAGE = "com.example.summary.MESSAGE";
 	private String mMatchId;
@@ -211,7 +212,7 @@ public class ScoreSummary extends Activity {
 		setContentView(R.layout.activity_score_summary1);
 		super.onCreate(savedInstanceState);
 		Intent intent = getIntent();
-		mMatchId = intent.getStringExtra(PastMatches.EXTRA_MESSAGE);
+		mMatchId = intent.getStringExtra(PastMatchesActivity.EXTRA_MESSAGE);
 		//Toast.makeText(getApplicationContext(), matchId, Toast.LENGTH_SHORT).show();
 
 		final String result = CricketUtil.stripYahooStringFromJson(Webutil.getUrlOutput(CricketUtil.getFullScorcardURL(mMatchId)));
@@ -265,7 +266,7 @@ public class ScoreSummary extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(ScoreSummary.this, FullScorecardMain.class);
+				Intent intent = new Intent(ScoreSummaryActivity.this, FullScorecardActivity.class);
 				intent.putExtra(EXTRA_MESSAGE,result);
 				startActivity(intent);
 

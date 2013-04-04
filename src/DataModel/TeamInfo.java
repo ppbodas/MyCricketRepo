@@ -1,6 +1,7 @@
-package com.example.cricket;
+package DataModel;
 
 import java.util.HashMap;
+
 
 public class TeamInfo {
 	public String mTeamFullName;
