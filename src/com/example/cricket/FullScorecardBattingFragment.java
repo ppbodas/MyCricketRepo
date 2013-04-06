@@ -3,8 +3,6 @@ package com.example.cricket;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,13 +13,10 @@ import DataModel.BattingScorecardEntryInfo;
 import DataModel.ScorecardMatchInfo;
 import DataModel.TeamInfo;
 import android.os.Bundle;
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -30,13 +25,14 @@ import android.widget.TextView;
 public class FullScorecardBattingFragment extends Fragment {
 	
 	private String mInningId = new String();
-	public FullScorecardBattingFragment(String inningId) {
-		mInningId = inningId;		
-	}
+	public FullScorecardBattingFragment() {		
+	}	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e("Test", "hello");
+        Bundle bundle = getArguments();
+		mInningId = bundle.getString("InningId");
     }
  
     @Override

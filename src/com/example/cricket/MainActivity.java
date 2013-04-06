@@ -1,23 +1,12 @@
 package com.example.cricket;
 
 
-import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.example.cricketutil.CricketUtil;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.example.webutil.Webutil;
 
 public class MainActivity extends Activity {
 

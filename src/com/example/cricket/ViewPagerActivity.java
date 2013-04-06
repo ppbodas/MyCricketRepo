@@ -1,13 +1,11 @@
 package com.example.cricket;
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.Menu;
 
 public class ViewPagerActivity extends FragmentActivity {
     private MyAdapter mAdapter;
@@ -39,13 +37,17 @@ public class ViewPagerActivity extends FragmentActivity {
  
         @Override
         public Fragment getItem(int position) {
-            switch (position) {
+        	Bundle args = new Bundle();
+            args.putString("InningId", mInningId);
+            switch (position) {                        
             case 0:
-                return new FullScorecardBattingFragment(mInningId);
+                FullScorecardBattingFragment battingFragment = new FullScorecardBattingFragment();
+                battingFragment.setArguments(args);
+                return battingFragment;
             case 1:
-                return new FullScorecardBowlingFragment(mInningId);
-            
- 
+            	FullScorecardBowlingFragment bowlingFragment = new FullScorecardBowlingFragment();
+            	bowlingFragment.setArguments(args);
+            	return bowlingFragment;
             default:
                 return null;
             }

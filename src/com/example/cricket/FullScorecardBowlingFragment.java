@@ -9,21 +9,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.cricket.Adapters.BattingScorecardEntryAdapter;
 import com.example.cricket.Adapters.BowlingScorecardEntryAdapter;
 
-import DataModel.BattingScorecardEntryInfo;
 import DataModel.BowlingScorecardEntryInfo;
 import DataModel.ScorecardMatchInfo;
 import DataModel.TeamInfo;
 import android.os.Bundle;
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -32,13 +27,13 @@ import android.widget.TextView;
 public class FullScorecardBowlingFragment extends Fragment {
 	
 	private String mInningId = new String();
-	public FullScorecardBowlingFragment(String inningId) {
-		mInningId = inningId;		
+	public FullScorecardBowlingFragment() {		
 	}
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e("Test", "hello");
+        mInningId = getArguments().getString("InningId");
     }
  
     @Override

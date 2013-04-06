@@ -41,7 +41,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="54dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/listScorecard"
         android:layout_toRightOf="@+id/textTeamName"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 

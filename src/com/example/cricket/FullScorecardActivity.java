@@ -1,37 +1,16 @@
 package com.example.cricket;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.zip.Inflater;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.cricket.Adapters.BattingScorecardEntryAdapter;
-import com.example.cricketutil.CricketUtil;
-import com.example.webutil.Webutil;
-
-import DataModel.PlayerInfo;
-import DataModel.BattingScorecardEntryInfo;
 import DataModel.ScorecardMatchInfo;
-import DataModel.TeamInfo;
 import android.os.Bundle;
-import android.app.Activity;
 import android.app.TabActivity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
-import android.widget.TextView;
 
 public class FullScorecardActivity extends TabActivity{
 
