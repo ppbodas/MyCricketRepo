@@ -105,7 +105,10 @@ public class PastMatchesActivity extends Activity {
 				else{
 					if("abandoned".equals(joResult.getString("how"))){
 						info.setMatchResult("Match Abandoned");
-					}		
+					}
+					else if("drawn".equals(joResult.getString("how"))){
+						info.setMatchResult("Match Draw");
+					}
 				}
 				mPastMatchesInfo.add(info);
 			}
