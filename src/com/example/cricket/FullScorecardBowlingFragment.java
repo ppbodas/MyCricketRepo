@@ -89,6 +89,7 @@ public class FullScorecardBowlingFragment extends Fragment {
 						scorecardEntryInfo.setMaiden(jaBowlingDetails.getJSONObject(j).getString("mo"));
 						scorecardEntryInfo.setRuns(jaBowlingDetails.getJSONObject(j).getString("r"));
 						scorecardEntryInfo.setWickets(jaBowlingDetails.getJSONObject(j).getString("w"));
+						scorecardEntryInfo.setBowlerImageURL(l_TeamsInfo.get(bowlingTeamId).mSquad.get(bowlingPlayerId).mPlayerImageURL);
 						scorecardEntryInfoList.add(scorecardEntryInfo);
 					}
 					

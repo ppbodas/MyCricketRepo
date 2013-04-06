@@ -4,11 +4,19 @@
          android:layout_height="wrap_content"
          android:orientation="horizontal">
 
+    <ImageView
+        android:id="@+id/bowlerImage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.15"
+        android:src="@drawable/cell_shape" />
+
          <TextView
              android:id="@+id/textPlayerName"
              android:layout_width="0dp"
              android:layout_height="wrap_content"
-             android:layout_weight="0.5"
+             android:layout_gravity="center_vertical"
+             android:layout_weight="0.35"
              android:textAppearance="?android:attr/textAppearanceSmall" />
 
          <View

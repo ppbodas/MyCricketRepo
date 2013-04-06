@@ -6,6 +6,7 @@ public class BowlingScorecardEntryInfo {
 	private String mRuns;
 	private String mMaiden;
 	private String mWickets;
+	private String mBowlerImageURL;
 	
 	public void setPlayerName(String value){
 		mPlayerName = value;
@@ -22,6 +23,9 @@ public class BowlingScorecardEntryInfo {
 	public void setWickets(String value){
 		mWickets = value;
 	}
+	public void setBowlerImageURL(String value){
+		mBowlerImageURL = value;
+	}
 	public String getPlayerName(){
 		return mPlayerName;
 	}
@@ -36,5 +40,8 @@ public class BowlingScorecardEntryInfo {
 	}
 	public String getWickets(){
 		return mWickets;
+	}
+	public String getBowlerImageURL(){
+		return mBowlerImageURL;
 	}
 }

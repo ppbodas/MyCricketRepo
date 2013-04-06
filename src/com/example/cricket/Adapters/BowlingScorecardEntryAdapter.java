@@ -57,6 +57,7 @@ public class BowlingScorecardEntryAdapter extends BaseAdapter {
 		   holder.txtMaiden = (TextView) convertView.findViewById(R.id.textMaiden);
 		   holder.txtRuns = (TextView) convertView.findViewById(R.id.textRuns);
 		   holder.txtWicket = (TextView) convertView.findViewById(R.id.textWicket);
+		   holder.imgView = (ImageView) convertView.findViewById(R.id.bowlerImage);
 		   convertView.setTag(holder);
 		  } else {
 		   holder = (ViewHolder) convertView.getTag();
@@ -67,7 +68,7 @@ public class BowlingScorecardEntryAdapter extends BaseAdapter {
 		  holder.txtRuns.setText(scorecardEntryInfoList.get(position).getRuns());
 		  holder.txtMaiden.setText(scorecardEntryInfoList.get(position).getMaiden());
 		  holder.txtWicket.setText(scorecardEntryInfoList.get(position).getWickets());
-		  
+		  ImageLoader.getOnlyInstance().fetchDrawableOnThread(scorecardEntryInfoList.get(position).getBowlerImageURL(), holder.imgView);
 		  return convertView;
 		 }
 	static class ViewHolder {
@@ -76,6 +77,7 @@ public class BowlingScorecardEntryAdapter extends BaseAdapter {
 		TextView txtRuns;
 		TextView txtMaiden;
 		TextView txtWicket;
+		ImageView imgView;
 	}
 
 }
