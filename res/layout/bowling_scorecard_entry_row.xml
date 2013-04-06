@@ -30,6 +30,7 @@
              android:id="@+id/textOvers"
              android:layout_width="0dp"
              android:layout_height="wrap_content"
+             android:layout_gravity="center_vertical"
              android:layout_weight="0.15"
              android:gravity="center"
              android:text="125"
@@ -46,6 +47,7 @@
              android:id="@+id/textMaiden"
              android:layout_width="0dp"
              android:layout_height="wrap_content"
+             android:layout_gravity="center_vertical"
              android:layout_weight="0.1"
              android:gravity="center"
              android:text="25"
@@ -62,6 +64,7 @@
              android:id="@+id/textRuns"
              android:layout_width="0dp"
              android:layout_height="wrap_content"
+             android:layout_gravity="center_vertical"
              android:layout_weight="0.15"
              android:gravity="center"
              android:text="200"
@@ -78,8 +81,10 @@
              android:id="@+id/textWicket"
              android:layout_width="0dp"
              android:layout_height="wrap_content"
+             android:layout_gravity="center_vertical"
              android:layout_weight="0.1"
              android:gravity="center"
              android:text="10"
              android:textAppearance="?android:attr/textAppearanceSmall" />
+
      </LinearLayout>
